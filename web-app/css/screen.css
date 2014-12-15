@@ -1,0 +1,67 @@
+/*
+	=====================================
+	project: Distinctive
+	author:  Luka Cvrk (www.solucija.com)
+	-------------------------------------
+	2009. Solucija
+	=====================================
+*/
+
+*{margin:0;padding:0}:focus,:active {outline:0}img{border: 0}
+body { font: .8em Arial, Tahoma, Verdana; background: #fff url(../images/bg.gif) repeat-x; color: #777; }
+a { text-decoration: none; color: #B20F0F; }
+h1 { font-size: 1.4em; font-weight: normal; }
+	h1 a { color: #fff; font-size: 1.6em; }
+h2 { font-size: 1.2em; }
+h3 { font-size: 1.2em; background: #B00A0A url(../images/redbg.gif) repeat-x left bottom; padding: 6px 7px; color: #fff; font-weight: normal; margin: 0 0 15px; float: left; }
+h4 { margin: 0 0 15px; color: #555; font-weight: normal; font-size: 1.6em; font-weight: normal; }
+p { clear: both; line-height: 1.64em; margin: 0 0 15px; }
+.line { clear: both; border-bottom: 1px solid #ddd; margin: 0 0 45px; }
+.clear { clear: both; }
+#content { width: 970px; margin: 0 auto; }
+	#top { color: #ccc; padding: 6px 20px 0; font-size: .84em; text-align: right; }
+	#logo { float: left; background: url(../images/redbg.gif) repeat-x; padding: 50px 25px 15px; margin: -46px 0 20px; }
+		#logo h1 { text-shadow: 1px 1px 1px #7E0E0E; }
+	#menu { float: right;}
+		#menu li { display: inline; font-size: 1.3em; }
+			#menu li a { float: left; color: #808080; padding: 0 0 5px; margin: 0 0 0 55px; }
+			#menu li a:hover, #menu li.current a, #menu li a:focus { color: #000; border-bottom: 1px solid #ddd; }
+	#pitch { background: url(../images/monitor.gif) no-repeat right top; padding: 30px 350px 0 0; border-bottom: 1px solid #ddd; height: 210px; margin: 0 0 35px; }
+/*  #home_pitch { padding: 30px 350px 0 0; border-bottom: 1px solid #ddd; height: 260px; margin: 0 0 35px; } */
+	#home_pitch { border-bottom: 1px solid #DDDDDD; width: 100%; float: left; margin: 0 0 35px; padding: 30px 15px 20px 15px; }
+		#home_pitch h1 { font-size: 2.6em; color: #000; margin: 0 0 20px; }
+		#home_pitch h2 { line-height: 1.5em; }
+	
+		#pitch h1 { font-size: 2.6em; color: #000; margin: 0 0 20px; }
+		#pitch h2 { line-height: 1.5em; }
+	.left { float: left; width: 250px; }	
+	.right { float: right; width: 630px; margin: 0 0 20px; }
+		.right h3 { background: #808080; font-size: .84em; }
+	.third { float: left; width: 296px; margin: 0 40px 20px 0; }
+		.last { margin-right: 0; }
+	#footer { clear: both; font-size: .84em; border-top: 1px solid #ddd; padding: 20px 0 0; }
+	.gift { width: 250px; float: left; border: 1px solid #ddd; padding: 10px 10px 30px 10px; overflow: hidden; position: relative; }
+	.gift .title {width: 100%; text-align: center; margin-top: 20px; }
+	.inactive_favorite { float: right; background:url(../images/inactiveStar.png); width: 30px; height: 30px; }
+	.active_favorite { float: right; background:url(../images/activeStar.png); width: 30px; height: 30px; }
+	.friend{float:left;clear:left;font-size: 1.3em;}
+	.category { font-size: 1.2em; background: #B00A0A url(../images/redbg.gif) repeat-x left bottom; padding: 6px 7px; color: #fff; font-weight: normal;}
+		.category a {color: #fff;}
+	.normalFont {color: #000000; font-size: 2.6em; margin: 0 0 20px; }
+
+.relative { position: relative; float: left; width: 100%; }
+.selectfriend{ float: left; margin-top: 20px; }
+.selectfriend img { float: left; }
+.selectfriend span { margin-left: 15px; float: left; font-size: 22px; line-height: 50px; }
+.btn1 { background-color: #B20F0F; color: #FFF; border-radius: 5px; padding: 5px 10px; float: right; }
+.withstar { line-height: 32px; float: right; margin-top: 20px; }
+.withstar span{ display:block; background: url("../images/startransparent.png") repeat scroll 0 0 transparent; height: 32px; width: 32px; float: left; margin-right: 10px; }
+
+.gift-list h1 { float: left; }
+.gift-list .btn1 { float: right; margin-top: 10px; }
+.gift-list-head { width: 100%; float: left; }
+.line2 {margin: 0 0 9px;}
+
+.friend-item { float: left; width: 200px; margin-right: 15px; }
+.friend-item a { float: left; display: block; width; 50px; }
+.friend-item span { float: left;  width: 140px; margin-left: 5px; padding-top: 10px; }
