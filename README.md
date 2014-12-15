@@ -1,4 +1,4 @@
-seekagift
+SeekAGift
 =========
 
 Find the perfect gift for a mate
