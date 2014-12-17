@@ -9,5 +9,9 @@ class UrlMappings {
 
         "/" (controller:'login', action:'home')
         "500"(view:'/error')
+
+        // Login
+        name loginFacebook: "/login/facebook-login" {controller = 'facebook'; action = 'login'}
+        name loginFacebookCallback: "/login/facebook/callback" {controller = 'facebook'; action = 'callbackLogin'}
 	}
 }

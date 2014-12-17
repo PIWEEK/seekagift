@@ -17,8 +17,6 @@
 <%--    <g:layoutHead />--%>
 </head>
 <body>
-	<fbg:resources/>
-	
 	<div id="content">
 		<p id="top">Confucio pensó alguna vez: "¿Qué le regalaré a ese tío que me cae tan mal si no se ni cómo se llama?"</p>
 		<div id="logo">
@@ -43,7 +41,7 @@
 			<p align='left'><img src='images/step1.jpg'/></p>
 			<h3>Conéctate a Facebook</h3>    
 			<p>Contectandote a facebook accederás a un montón de información que ya tienes sobre tus amigos.</p>
-			<p><fb:login-button scope="email,user_likes,friends_likes" onlogin="facebookLogin();" size="large">Login Facebook</fb:login-button></p>
+			<p><g:link mapping='loginFacebook'>Login Facebook</g:link></p>
 		</div>
 		<div class="third">
 			<p align='left'><img src='images/step2.jpg'/></p>

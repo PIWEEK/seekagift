@@ -11,6 +11,6 @@ class LoginController {
 			friends = socialNetworkService.getFriends(user)
 		}
 
-		render(view: "home", model: [user: user, friends: friends])
+		render(view: "/home", model: [user: user, friends: friends])
 	}
 }
