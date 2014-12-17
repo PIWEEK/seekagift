@@ -3,14 +3,10 @@ package seekagift
 class LoginController {
 
 	def socialNetworkService
-	
-    def home() { 		
-		def user = socialNetworkService.getUser()
-		def friends
-		if (user) {
-			friends = socialNetworkService.getFriends(user)
-		}
 
-		render(view: "/home", model: [user: user, friends: friends])
+    def home() {
+		def user = session['FACEBOOK_FBUID']
+
+		render(view: "/home", model: [user: user])
 	}
 }

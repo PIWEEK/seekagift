@@ -28,9 +28,11 @@ class FacebookService {
     private getAuthServiceLogin(){
         if (! authServiceLogin) {
             def callbackUrl = grailsLinkGenerator.link(absolute: true,mapping: 'loginFacebookCallback')
-            def key = grailsApplication.config.facebook.key as String
+            def key = grailsApplication.config.facebook.applicationKey as String
 
-            def secret = grailsApplication.config.facebook.secret as String
+            def secret = grailsApplication.config.facebook.applicationSecret as String
+
+            println grailsApplication.config.facebook
 
             authServiceLogin = new ServiceBuilder().provider(FacebookApi.class)
                     .apiKey(key)
@@ -49,9 +51,9 @@ class FacebookService {
     private getAuthServiceFriends(){
         if (! authServiceFriends) {
             def callbackUrl = grailsLinkGenerator.link(absolute: true,mapping: 'searchFriendsFacebookCallback')
-            def key = grailsApplication.config.facebook.key as String
+            def key = grailsApplication.config.facebook.applicationKey as String
 
-            def secret = grailsApplication.config.facebook.secret as String
+            def secret = grailsApplication.config.facebook.applicationSecret as String
 
             authServiceFriends = new ServiceBuilder().provider(FacebookApi.class)
                     .apiKey(key)
@@ -153,12 +155,11 @@ class FacebookService {
         userInfo.lastName = jsonInfo.last_name
         userInfo.email = jsonInfo.email
         userInfo.birthday = Utils.parseDate(jsonInfo.birthday, "MM/dd/yyyy")
-        userInfo.gender = jsonInfo.gender == "male" ? GenderType.MALE : GenderType.FEMALE
+        userInfo.gender = jsonInfo.gender
         userInfo.fbUid = jsonInfo.id
 
         return userInfo
     }
-
 
     /**
      * Retrieves user information from facebook for friends
@@ -195,7 +196,7 @@ class FacebookService {
         userInfo.lastName = jsonInfo.last_name
         userInfo.email = jsonInfo.email
         userInfo.birthday = Utils.parseDate(jsonInfo.birthday, "MM/dd/yyyy")
-        userInfo.gender = jsonInfo.gender == "male" ? GenderType.MALE : GenderType.FEMALE
+        userInfo.gender = jsonInfo.gender
         userInfo.fbUid = jsonInfo.id
 
         return userInfo
@@ -205,11 +206,10 @@ class FacebookService {
     /**
      * Get the friends from facebook
      *
-     * @param user user logged from facebook
      * @param accessToken user access token
      * @return a list with the friends
      */
-    def getFriends(user, accessToken) {
+    def getFriends(accessToken) {
         OAuthRequest request = new OAuthRequest(Verb.GET, 'https://graph.facebook.com/me/friends/')
         getAuthServiceFriends().signRequest(accessToken, request)
         def response = request.send()
@@ -223,13 +223,6 @@ class FacebookService {
             contact.name = it.name
             contact.fbUid = it.id
             contact.photo = "https://graph.facebook.com/${it.id}/picture"
-            result = FriendInvitationHistory.findAllByFbUidAndUser(it.id, user)
-            if (result){
-                contact.hasBeenInvited = true
-                contact.dateInvited = Utils.stringDate(result.dateCreated[result.dateCreated.size-1],"dd/MM/yyyy")
-            }else{
-                contact.hasBeenInvited = false
-            }
             friends << contact
         }
 

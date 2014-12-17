@@ -138,5 +138,5 @@ log4j.main = {
 
 // Facebook
 facebook.applicationSecret='bfa4b5c9b43aec1ddeef7853d48af948'
-facebook.applicationId='383781528344528'
+facebook.applicationKey='383781528344528'
 
