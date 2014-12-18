@@ -28,8 +28,9 @@
 
         <ul id="menu">
             <g:if test="${user}">
-                <li><img src='${user.photo}'/></li><br/>
-                <li>${user.name}</li><br/>
+<%--                <li><img src='${user.photo}'/></li><br/>
+                <li>${user.name}</li><br/> --%>
+                <li>${user}</li><br/>
             </g:if>
 
         </ul>

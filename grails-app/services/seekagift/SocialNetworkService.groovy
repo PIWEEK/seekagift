@@ -4,18 +4,14 @@ import grails.converters.JSON
 
 class SocialNetworkService {
 
-    def facebookService
+    // def facebookService
 
-    public List getFriends(String accessToken) {
-		return facebookService.getFriends(accessToken)
-    }
+    // public List getFriends(String accessToken) {
+    //     return facebookService.getFriends(accessToken)
+    // }
 
-    public User getUser() {
-      return facebookService.getUser()
-    }
-
-    public List getLikes(String userId) {
-      return facebookService.getLikes(userId)
-    }
+    // public List getLikes(String userId) {
+    //     return facebookService.getLikes(userId)
+    // }
 
 }

@@ -1,6 +1,6 @@
 class UrlMappings {
 
-	static mappings = {
+        static mappings = {
         "/$controller/$action?/$id?(.$format)?"{
             constraints {
                 // apply constraints here
@@ -16,7 +16,9 @@ class UrlMappings {
 
         // Search friends in Facebook
         name searchFriendsFacebook: "/user/search/facebook/friends" { controller = 'facebook'; action = [GET:'searchFriendsInFacebook'] }
-        name searchFriendsFacebookCallback: "/user/search/facebook/friends/callback" { controller = 'facebook'; action = [GET:'searchFriendsInFacebookCallback'] }
-        name searchFriendsFacebookCallbackWizard: "/user/search/facebook/friends/callback/wizard" { controller = 'facebook'; action = [GET:'searchFriendsInFacebookCallbackWizard'] }
-	}
+        // name searchFriendsFacebookCallback: "/user/search/facebook/friends/callback" { controller = 'facebook'; action = [GET:'searchFriendsInFacebookCallback'] }
+
+        name giftForMe: "/gift/me/" { controller = 'socialNetwork'; action="giftForMe" }
+
+        }
 }

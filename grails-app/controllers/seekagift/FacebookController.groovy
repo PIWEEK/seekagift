@@ -40,11 +40,13 @@ class FacebookController {
 
         println "entrando..."
 
-		def g = grailsApplication.mainContext.getBean('org.codehaus.groovy.grails.plugins.web.taglib.ApplicationTagLib')
+        def g = grailsApplication.mainContext.getBean('org.codehaus.groovy.grails.plugins.web.taglib.ApplicationTagLib')
 
 
         //If the user was logged correctly at facebook, 'getAccessToken' will return an access token
         def accessToken = facebookService.getAccessTokenLogin(params)
+
+        session['FACEBOOK_FBACCESSTOKEN'] = accessToken
 
         // If the user could'n log in at fb, accessToken will be null
         if (!accessToken) {
@@ -55,14 +57,14 @@ class FacebookController {
         //'getUserInfo' returns the info of the user logged in at fb (email/gender/name as user object)
         Map userInfo = facebookService.getUserInfoLogin(accessToken)
         session['FACEBOOK_FBUID'] = userInfo.fbUid
-	session['FACEBOOK_NEXTURI'] = null
+        session['FACEBOOK_NEXTURI'] = null
 
         // // Find the user by facebookUserId (fbUid) instead of email
         // User user = User.findByFbUid(userInfo.fbUid)
 
         // // Create the user if the user does not exist previously
         // if (!user)
-	// {
+        // {
 
         //     // Check if the user exist by email. Update his fbUid and login the user
         //     user = User.findByEmail(userInfo.email?.toLowerCase())
@@ -110,31 +112,31 @@ class FacebookController {
     }
 
 
-    /**
-     * Redirect the user to login to facebook and when done call the action to get the friends of the user
-     */
-    def searchFriendsInFacebook() {
+    // /**
+    //  * Redirect the user to login to facebook and when done call the action to get the friends of the user
+    //  */
+    // def searchFriendsInFacebook() {
 
-        def authInfo = facebookService.getAuthDetailsFriends()
+    //     def authInfo = facebookService.getAuthDetailsFriends()
 
-        if (authInfo) {
-            redirect url:authInfo.authUrl
-            return
-        } else {
-            flash.error = message(code:'login.fb.denyPermissions')
-            redirect mapping:'home'
-            return
-        }
-    }
+    //     if (authInfo) {
+    //         redirect url:authInfo.authUrl
+    //         return
+    //     } else {
+    //         flash.error = message(code:'login.fb.denyPermissions')
+    //         redirect mapping:'home'
+    //         return
+    //     }
+    // }
 
     /**
      * Callback from Facebook to get the friends of the user
      */
-    def searchFriendsInFacebookCallback() {
+    def searchFriendsInFacebook() {
         // def user = springSecurityService.currentUser
 
-        def accessToken = facebookService.getAccessTokenFriends(params)
-
+        // def accessToken = facebookService.getAccessTokenFriends(params)
+        def accessToken = session['FACEBOOK_FBACCESSTOKEN']
 
         // If the user could not login in Facebook, accessToken will be null
         if (!accessToken) {
@@ -151,6 +153,9 @@ class FacebookController {
         //     user.save()
         // }
         def friends = facebookService.getFriends(accessToken)
+        
+        println friends
+
 
         String link = g.createLink(absolute:true, mapping:'rootInvitation', params:[token:''])
         String fbAppId = grailsApplication.config.facebook.key as String
